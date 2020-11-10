@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <!-- Make sure you put this AFTER Leaflet's CSS -->
+        <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+        <!--<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin=""/> -->
+        <link href="static/css/style.css" rel="stylesheet" />
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/highcharts-more.js"></script>
+        <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    </head>
+
+    <body>
+
+
+      <header class="header">
+        <nav class="navbar">
+            <div class="logo__container">
+                <img class="logo__image" src="./static/assets/img/logo.png" alt="BW7 logo" />
+            </div>
+            <ul class="navigation">
+                <li class="navigation__item navigation__item--active"><a class="navigation__itemLink" href="dashboard.html">Dashboard</a></li>
+              <!--  <li class="navigation__item"><a class="navigation__itemLink" href="map.html">Mapa</a></li>-->
+                <!--<li class="navigation__item"><a class="navigation__itemLink" href="#evaluate">Data</a></li>-->
+            </ul>
+            <div class="userInfo">
+                <div class="userInfo__name">Client Name</div>
+                <div class="userInfo__settingsContainer"><a class="userInfo__settingsLink" href="#">Account settings</a></div>
+            </div>
+        </nav>
+    </header>
+
+
+
+    <div class="five">
+        <div class="flex-container">
+
+            <div class="flex__third h56 row1 card-1">
+                <div class="high chart1">
+                    <!--Hum&Temp graph-->
+                    <figure class="highcharts-figure">
+                        <div id="container"></div>
+                    </figure>
+                    <button id="play" onclick="play()">play</button>
+                    <button id="stop" onclick="stop()">stop</button>
+                </div>
+            </div>
+
+          
+          <div class="flex__one h57 row1 card-1 chart3">
+            <div class="high">
+                <div class="content-map">
+                    <!--map-->
+                    <div id="myMap"></div>
+                </div>
+            </div>
+          </div>
+            
+        </div>
+    </div>
+
+
+      <script src="static/js/scripts.js"></script>
+
+
+  </body>
+</html>
+
+
+
+
+
+

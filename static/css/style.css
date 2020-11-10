@@ -1,0 +1,321 @@
+@font-face
+{
+    font-family: LabGrotesque;
+    font-weight: 400;
+    src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/669679/LabGrotesqueWeb-Regular.woff);
+}
+
+@font-face
+{
+    font-family: LabGrotesque;
+    font-weight: 500;
+    src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/669679/LabGrotesqueWeb-Medium.woff);
+}
+
+@font-face
+{
+    font-family: LabGrotesque;
+    font-weight: 700;
+    src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/669679/LabGrotesqueWeb-Bold.woff);
+}
+
+html
+{
+    font-family: LabGrotesque;
+    font-size: 14px;
+    font-weight: 400;
+    min-width: 970px;
+    color: #434242;
+    background-color: #f7f7f7;
+}
+
+body{
+    margin: 0;
+}
+a{
+    text-decoration: none;
+}
+/*////////////////////////////////////////////////HEADER*/
+.navbar{
+    display: flex;
+    padding: 0 15px 0 15px;
+    color: #fff;
+    background-color: #292929;
+    align-items: center;
+}
+
+.logo__container{
+    width: 53px;
+    margin-right: 10px;
+    height: 100%;
+}
+
+.logo__image{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.navigation{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex-grow: 3;
+}
+
+.navigation__item
+{
+    font-size: 20px;
+    line-height: 72px;
+    display: inline-flex;
+    width: 155px;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+}
+.navigation__itemLink
+{
+    margin: auto 0;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.navigation__item--active
+{
+    background-color: #1a1b1d;
+}
+.userInfo
+{
+    margin: auto 0;
+    text-align: center;
+    flex-grow: 1;
+}
+.userInfo__name
+{
+    font-size: 18px;
+    font-weight: 500;
+}
+.userInfo__settingsLink
+{
+    font-weight: 500;
+    color: #68a2cc;
+}
+/*////////////////////////////////////////////////PANELS*/
+.five{
+
+}
+.flex-container {
+    display: -webkit-flex; /* Safari */
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap:wrap;
+    -webkit-align-items: stretch; 
+    align-items:stretch;
+        -webkit-justify-content: space-between; /* Safari */
+    justify-content:         space-between;
+    position:absolute;
+    width:calc(100% - 150px - 6%);
+    height:calc(100% - 150px - 1%);
+    top:150px;
+    left:calc(80px + 3%);
+}
+.flex-container > div {
+    position:relative;
+    background:#fff;
+}
+/**/
+.flex__one{
+    width:32%;
+}
+.flex__one.row1 {
+    width:100%;
+}
+
+/**/
+.h40{
+    height:40%;
+}
+.flex__four{
+    width:100%;
+}
+/**/
+.flex__third{
+    width:65.33%;
+}
+.flex__third.row1{
+    width:100%;
+}
+.h56{
+    height:56%;
+}
+.h57{
+    height:100%;
+}
+/**/
+
+.high{
+    position:absolute;
+    height:calc(100% - 40px);
+    top:20px;
+    width:calc(100% - 40px);
+    left:20px;
+    background:#fff;
+}
+.chart1, .chart2, .chart3, .chart4, .chart5{
+
+}
+.chart3{
+    margin-top: 40px;
+}
+.card-1, .card-2, .card-3, .card-4, .card-5 {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px 2px #D7D7D7;
+}
+.chart-lbl {
+    margin-left: 5%;
+    font-size: 12px;
+    color: var(--grey-d3);
+    opacity: 0.8;
+}
+.content-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.divider {
+    background-color: var(--grey-d2);
+    height: 2px;
+    margin: auto;
+    width: 98%;
+}
+.doughnut-chart-container{
+    width: 600px; height: 400px; margin: 0 auto;
+}
+
+
+
+
+.highg{
+
+    height:calc(100% - 40px);
+    width:calc(100% - 40px);
+    background:#fff;
+}
+.highcharts-figure-gauge {
+    width: 100%;
+}
+
+
+
+
+
+
+
+/*////////////////////////////////////////////////GRAPHS*/
+@import "https://code.highcharts.com/css/highcharts.css";
+
+.highcharts-graph.danger {
+   stroke: red;
+}
+
+.highcharts-graph.warning {
+   stroke: orange;
+}
+
+.highcharts-graph.zone-2 {
+   stroke: #90ed7d;
+}
+
+
+.highcharts-figure, .highcharts-data-table table {
+    /*min-width: 310px; 
+    max-width: 100%;*/
+    height: 100%;
+}
+#container {
+    height: 100%;
+}
+.highcharts-data-table table {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #EBEBEB;
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+}
+.highcharts-data-table th {
+    font-weight: 600;
+    padding: 0.5em;
+}
+.highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+    padding: 0.5em;
+}
+.highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+.highcharts-data-table tr:hover {
+    background: #f1f7ff;
+}
+
+/*///////////////////////////*/
+
+
+@media (max-width: 600px) {
+	.highcharts-figure-gauge, .highcharts-data-table table {
+		width: 100%;
+	}
+	.highcharts-figure-gauge .chart-container {
+		width: 300px;
+		float: none;
+		margin: 0 auto;
+	}
+
+}
+
+
+  
+  
+  
+
+
+/*////////////////////////////////////////////////MAP*/
+
+.content-map{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+  
+  
+#myMap { 
+    padding: 10px;
+    margin: 10px;
+    width: 100%;
+    height: 100%;
+    box-shadow: 5px 5px 5px #888;
+}
+  
+
+/*
+.colors{
+color: #2f7ed8;
+color: #0d233a;
+color: #8bbc21;
+color: #910000;
+color: #1aadce;
+color: #492970;
+color: #f28f43;
+color: #77a1e5;
+color: #c42525;
+color: #a6c96a;
+}
+*/

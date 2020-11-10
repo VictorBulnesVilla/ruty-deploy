@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <!-- Make sure you put this AFTER Leaflet's CSS -->
+
+        <link href="static/css/test.css" rel="stylesheet" />
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/highcharts-more.js"></script>
+        <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    </head>
+
+    <body>
+        <header class="header">
+            <nav class="navbar">
+                <div class="logo__container">
+                    <img class="logo__image" src="./static/assets/img/logo.png" alt="BW7 logo" />
+                </div>
+                <ul class="navigation">
+                    <li class="navigation__item navigation__item--active"><a class="navigation__itemLink" href="dashboard.html">Dashboard</a></li>
+                    <li class="navigation__item"><a class="navigation__itemLink" href="map.html">Mapa</a></li>
+                    <!--<li class="navigation__item"><a class="navigation__itemLink" href="#evaluate">Data</a></li>-->
+                </ul>
+                <div class="userInfo">
+                    <div class="userInfo__name">Client Name</div>
+                    <div class="userInfo__settingsContainer"><a class="userInfo__settingsLink" href="#">Account settings</a></div>
+                </div>
+            </nav>
+        </header>
+
+
+
+        <div class="panel">
+            <div id="container-speed" class="chart-container"></div>
+            <div id="container-speed2" class="chart-container"></div>
+            <div id="container-rpm" class="chart-container"></div>
+
+            <div class="flex__third h56 row1 card-1">
+                <div class="high chart1">
+                    <!--Hum&Temp graph-->
+                    <figure class="highcharts-figure">
+                        <div id="container"></div>
+                    </figure>
+                    <button id="play" onclick="play()">play</button>
+                    <button id="stop" onclick="stop()">stop</button>
+                </div>
+            </div>
+        </div>
+
+      <script src="static/js/test.js"></script>
+
+  </body>
+</html>
+<!--
+<div style="width: 600px; height: 400px; margin: 0 auto">
+    <div id="container-speed" style="width: 300px; height: 200px; "></div>
+</div>
+-->
