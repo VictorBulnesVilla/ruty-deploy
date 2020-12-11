@@ -142,6 +142,8 @@ a{
 /**/
 .flex__third{
     width:65.33%;
+
+    margin-bottom: 40px;
 }
 .flex__third.row1{
     width:100%;
@@ -162,7 +164,10 @@ a{
     left:20px;
     background:#fff;
 }
-.chart1, .chart2, .chart3, .chart4, .chart5{
+.chart1{
+
+}
+.char2{
 
 }
 .chart3{
@@ -172,6 +177,7 @@ a{
     background-color: white;
     border-radius: 20px;
     box-shadow: 2px 2px 5px 2px #D7D7D7;
+
 }
 .chart-lbl {
     margin-left: 5%;
@@ -194,7 +200,9 @@ a{
     width: 600px; height: 400px; margin: 0 auto;
 }
 
-
+#container-ethy{
+    height: 100%;
+}
 
 
 .highg{

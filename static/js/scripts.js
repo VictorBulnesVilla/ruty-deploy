@@ -1,8 +1,10 @@
 
 // global
-let chart; 
+let chartHumTemp; 
+let chartEthyl; 
 let isPlay = true;
 let url = 'http://localhost:80/ruty_api_test/delivery/truck/1/last'; 
+
 
 //API REQ
 async function requestData() {
@@ -11,33 +13,51 @@ async function requestData() {
         if (result.ok) {
 
             const data = await result.json();
-            //const [date, value] = data[0];
             var temp = data.data.temp.data;
             var hum = data.data.hum.data; 
             var entryDate = data.data.temp.date;
-            //var latCoord = data.data.temp.coords.latitude;
-            //var lonCoord = data.data.temp.coords.longitude;
             console.log(entryDate+" "+temp+" "+hum);
             const pointTemp = [new Date(entryDate).getTime(), temp];  
             const pointHum = [new Date(entryDate).getTime(), hum];        
-            //const pointTemp = [new Date(date).getTime(), value * 10];
-            //const pointHum = [new Date(date).getTime(), value * 5];
-            const series = chart.series[0],
+            const series = chartHumTemp.series[0],
                 shift = series.data.length > 20; // shift if the series is longer than 20
-            const seriesH = chart.series[1],
+            const seriesH = chartHumTemp.series[1],
                 shiftH = seriesH.data.length > 20; // shift if the series is longer than 20
             // add the point
-            chart.series[0].addPoint(pointTemp, true, shift);
-            chart.series[1].addPoint(pointHum, true, shiftH);
+            chartHumTemp.series[0].addPoint(pointTemp, true, shift);
+            chartHumTemp.series[1].addPoint(pointHum, true, shiftH);
                     // call it again after one second
         setTimeout(requestData, 1000);
         }
     }
 }
 
+async function requestData2() {
+    if(isPlay == true){
+        const result = await fetch(url);
+        if (result.ok) {
+            const data = await result.json();
+            var ethy = data.data.ethy.data;
+            var entryDate = data.data.temp.date;
+
+            const pointEthy = [new Date(entryDate).getTime(), ethy];       
+
+            const seriesE = chartEthyl.series[0],
+                shift = seriesE.data.length > 20; // shift if the series is longer than 20
+            // add the point
+            chartEthyl.series[0].addPoint(pointEthy, true, shift);
+  
+                    // call it again after one second
+        setTimeout(requestData, 1000);
+        }
+    }
+}
+
+
+
 //grafica lineal
 window.addEventListener('load', function () {
-    chart = new Highcharts.Chart({
+    chartHumTemp = new Highcharts.Chart({
         chart: {
             renderTo: 'container',
             defaultSeriesType: 'spline',
@@ -108,7 +128,7 @@ window.addEventListener('load', function () {
             shared: true
         },
         series: [{
-            name: 'Temperature',
+            name: 'Temperatura',
             data: [],
             dataLabels: {
                 enabled: true,
@@ -132,7 +152,7 @@ window.addEventListener('load', function () {
                 }
             },
             {
-            name: 'Humedity',
+            name: 'Humedad',
             data: [],
             dataLabels: {
                 enabled: true,
@@ -143,6 +163,91 @@ window.addEventListener('load', function () {
             dashStyle: "shortDash",
             yAxis: 1,
             color: '#2f7ed8',
+            tooltip: {
+                valueSuffix: '%',
+                valueDecimals: 2
+                }
+            }
+        ]
+    });
+////////////////////////////////////////////////////ethylene
+//grafica lineal
+    chartEthyl = new Highcharts.Chart({
+        chart: {
+            renderTo: 'container-ethy',
+            defaultSeriesType: 'spline',
+            events: {
+                load: requestData2
+            }
+        },
+        title: {
+            text: 'Etileno',
+            style: {    
+                color: 'black',
+                fontWeight: 'bold'
+            }
+        },
+        credits: {
+            enabled: false
+        },
+        xAxis: {
+            type: 'datetime',
+            tickPixelInterval: 150,
+            maxZoom: 20 * 1000,
+            crosshair: true
+        },
+        yAxis: [{ // Primary yAxis
+            labels: {
+                format: '{value} %',
+                style: {
+                    color: Highcharts.getOptions().colors[1]
+                }
+            },
+            title: {
+                text: 'Ethylene in %',
+                style: {
+                    //textOutline: 0,
+                    color: Highcharts.getOptions().colors[1]
+                }
+            }
+        }],
+        legend: {
+            show: true,
+            layout: 'vertical',
+            align: 'left',
+            x: 120,
+            verticalAlign: 'top',
+            y: 50,
+            floating: true,
+            borderWidth: 2,
+            position: 'labeled',
+            backgroundColor:
+                Highcharts.defaultOptions.legend.backgroundColor || // theme
+                'rgba(255,255,255,0.25)'
+        },
+        tooltip: {
+            shared: true
+        },
+        series: [{
+            name: 'Etileno',
+            data: [],
+            dataLabels: {
+                enabled: true,
+                formatter: function () {
+                    return Highcharts.numberFormat(this.y,2);
+                }
+            },
+            dashStyle: "shortDash",
+            zones: [{
+                value: 10,
+                color: '#c42525'
+            }, {
+                value: 50,
+                color: '#f28f43'
+            }, {
+                color: '#0d233a'
+            }],
+            color: '#0d233a',
             tooltip: {
                 valueSuffix: '%',
                 valueDecimals: 2
@@ -164,6 +269,7 @@ function play(){
 function stop(){
     isPlay = false;
 }
+
 
 
 
@@ -210,7 +316,7 @@ function clickZoom(e) {
 
 updateMap()
 
-//var bounds = new L.LatLngBounds(arrayOfLatLngs);
+
 
 
 
