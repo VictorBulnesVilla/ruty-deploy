@@ -32,26 +32,7 @@ async function requestData() {
     }
 }
 
-async function requestData2() {
-    if(isPlay == true){
-        const result = await fetch(url);
-        if (result.ok) {
-            const data = await result.json();
-            var ethy = data.data.ethy.data;
-            var entryDate = data.data.temp.date;
 
-            const pointEthy = [new Date(entryDate).getTime(), ethy];       
-
-            const seriesE = chartEthyl.series[0],
-                shift = seriesE.data.length > 20; // shift if the series is longer than 20
-            // add the point
-            chartEthyl.series[0].addPoint(pointEthy, true, shift);
-  
-                    // call it again after one second
-        setTimeout(requestData, 1000);
-        }
-    }
-}
 
 
 
@@ -172,89 +153,7 @@ window.addEventListener('load', function () {
     });
 ////////////////////////////////////////////////////ethylene
 //grafica lineal
-    chartEthyl = new Highcharts.Chart({
-        chart: {
-            renderTo: 'container-ethy',
-            defaultSeriesType: 'spline',
-            events: {
-                load: requestData2
-            }
-        },
-        title: {
-            text: 'Etileno',
-            style: {    
-                color: 'black',
-                fontWeight: 'bold'
-            }
-        },
-        credits: {
-            enabled: false
-        },
-        xAxis: {
-            type: 'datetime',
-            tickPixelInterval: 150,
-            maxZoom: 20 * 1000,
-            crosshair: true
-        },
-        yAxis: [{ // Primary yAxis
-            labels: {
-                format: '{value} %',
-                style: {
-                    color: Highcharts.getOptions().colors[1]
-                }
-            },
-            title: {
-                text: 'Ethylene in %',
-                style: {
-                    //textOutline: 0,
-                    color: Highcharts.getOptions().colors[1]
-                }
-            }
-        }],
-        legend: {
-            show: true,
-            layout: 'vertical',
-            align: 'left',
-            x: 120,
-            verticalAlign: 'top',
-            y: 50,
-            floating: true,
-            borderWidth: 2,
-            position: 'labeled',
-            backgroundColor:
-                Highcharts.defaultOptions.legend.backgroundColor || // theme
-                'rgba(255,255,255,0.25)'
-        },
-        tooltip: {
-            shared: true
-        },
-        series: [{
-            name: 'Etileno',
-            data: [],
-            dataLabels: {
-                enabled: true,
-                formatter: function () {
-                    return Highcharts.numberFormat(this.y,2);
-                }
-            },
-            dashStyle: "shortDash",
-            zones: [{
-                value: 10,
-                color: '#c42525'
-            }, {
-                value: 50,
-                color: '#f28f43'
-            }, {
-                color: '#0d233a'
-            }],
-            color: '#0d233a',
-            tooltip: {
-                valueSuffix: '%',
-                valueDecimals: 2
-                }
-            }
-        ]
-    });
+    
 });
 
 

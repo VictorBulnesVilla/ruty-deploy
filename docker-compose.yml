@@ -1,0 +1,6 @@
+version: '2'
+services:
+  ruty:
+    image: ruty-deploy
+    ports:
+      - "8080:5000"
